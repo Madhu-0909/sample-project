@@ -1,0 +1,57 @@
+#%RAML 1.0
+title: Products Rest Service
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/ac00d6e6-d704-4554-a859-7543dffcb912/rest # baseUri: http://localhost:7070/rest
+
+/products:
+  get:
+    queryParameters:
+      page:
+        required: false
+        default: 0
+        example:
+          1
+        type: number
+      size:
+        required: false
+        default: 20
+        example: 10
+        type: number
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include allproducts.json
+  post:  
+    description: create a new product
+    body:
+      application/json:
+        example: !include addproduct.json
+    responses:
+      201:
+        body:
+          application/json:
+            example: !include productadded.json
+  /{productnamecontains}:
+    get:
+      queryParameters:
+        page:
+          required: false
+          default: 0
+          example: 1
+          type: number
+        size:
+          required: false
+          default: 20
+          example: 10
+          type: number
+      responses:
+        200:
+          body:
+            application/json:
+              example: !include allproducts.json 
+                
+                
+               
+               
+          
+            
